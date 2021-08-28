@@ -207,23 +207,73 @@ def resolve_pcv(dicionario, lista_vizinhos, tempo):
     print(two_opt(n_vertices, sol, dicionario, tempo))
 
 
-import random
+def resolve_pcv_vmp(instancia, tempo):
+    import random
 
-files = ['teste.txt', 'a280.txt', 'ali535.txt', 'ch130.txt', 'fl1577.txt', 'gr666.txt']
-
-for i in files:
-
-    path = 'C:\\Users\\cesar\\PycharmProjects\\Aeds3\\' + i
+    path = 'C:\\Users\\cesar\\PycharmProjects\\Aeds3\\' + instancia
 
     n_vertices, n_arestas, grafo = le_grafo(path)
 
     dicionario = grafo_dic(grafo)
     lista_vizinhos = lista_adjacencia(n_vertices, n_arestas, grafo)
 
-    tempo = 60
+    # print(aleat(n_vertices, dicionario, tempo))
+    print(vizin(n_vertices, dicionario, lista_vizinhos, tempo))
+    # sol = [x for x in range(n_vertices)]
+    # random.shuffle(sol)
+    # print(two_opt(n_vertices, sol, dicionario, tempo))
 
-    for _ in range(5):
-        vizin(n_vertices, dicionario, lista_vizinhos, tempo)
-        sol = [x for x in range(n_vertices)]
-        random.shuffle(sol)
-        two_opt(n_vertices, sol, dicionario, tempo)
+
+
+
+def resolve_pcv_2opt(instancia, tempo):
+    import random
+
+    path = 'C:\\Users\\cesar\\PycharmProjects\Aeds3\\' + instancia
+
+    n_vertices, n_arestas, grafo = le_grafo(path)
+
+    dicionario = grafo_dic(grafo)
+    lista_vizinhos = lista_adjacencia(n_vertices, n_arestas, grafo)
+
+    # print(aleat(n_vertices, dicionario, tempo))
+    # print(vizin(n_vertices, dicionario, lista_vizinhos, tempo))
+    sol = [x for x in range(n_vertices)]
+    random.shuffle(sol)
+    print(two_opt(n_vertices, sol, dicionario, tempo))
+
+# inst = str(input('Digite o nome da instância: (Exemplo: teste.txt)'))
+# tempo = int(input('Digite o tempo para execução da instância em segundos:'))
+
+    import random
+
+    files = ['teste.txt', 'a280.txt', 'ali535.txt', 'ch130.txt', 'fl1577.txt', 'gr666.txt']
+
+    for i in files:
+        for _ in range(5):
+            resolve_pcv(i,lista_vizinhos,60)
+
+
+inst = str(input('Digite o nome da instância: (Exemplo: teste.txt)'))
+tempo = int(input('Digite o tempo para execução da instância em segundos:'))
+
+resolve_pcv_vmp(inst, tempo)
+resolve_pcv_2opt(inst, tempo)
+
+
+# for i in files:
+#
+#     path = 'C:\\Users\\cesar\\PycharmProjects\\Aeds3\\' + i
+#
+#     n_vertices, n_arestas, grafo = le_grafo(path)
+#
+#     dicionario = grafo_dic(grafo)
+#     lista_vizinhos = lista_adjacencia(n_vertices, n_arestas, grafo)
+#
+#     tempo = 60
+#
+#     for _ in range(5):
+#         vizin(n_vertices, dicionario, lista_vizinhos, tempo)
+#         sol = [x for x in range(n_vertices)]
+#         random.shuffle(sol)
+#         two_opt(n_vertices, sol, dicionario, tempo)
